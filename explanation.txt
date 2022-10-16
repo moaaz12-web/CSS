@@ -1,0 +1,33 @@
+let store = createStore(counter)
+//STORE:: Holds the data.
+
+//ACTION:: It is just a name, not a sort of action. My action is increment! A function that returns an object!
+const increment=()=>{
+  return{
+    type:"INCREMENT"
+  }
+}
+const decrement=()=>{
+  return{
+    type:"DECREMENT"
+  }
+}
+
+//REDUCER:: How the actions transform the state to a new one. Reducer checks what action is, and based on that, it will modify the store.
+const counter = (initialState=0, action)=>{
+  switch(action.type){
+    case 'INCREMENT':
+      return initialState+1;
+    case 'DECREMENT':
+      return initialState-1;
+
+  }
+
+}
+
+//DISPLAY IN CONSOLE:
+store.subscribe(()=> console.log(store.getState()))
+
+
+//DISPATCH:: Used to execute the action to the reducer. It sends the ation to reducer, reducer will check what to do and update the store.
+store.dispatch(increment())
